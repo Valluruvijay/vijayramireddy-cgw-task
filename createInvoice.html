@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="URL Parameters">
+        <div class="slds-m-around_medium">
+            <lightning-datatable
+                key-field="key"
+                data={parameterEntries}
+                columns={columns}
+                hide-checkbox-column>
+            </lightning-datatable>
+
+          <lightning-input label="Required Quantity" value={requiredQuantity} onchange={handleQuantityChange}></lightning-input>
+
+            <lightning-button label="Show JSON" onclick={handleShowJson} class="slds-m-top_medium"></lightning-button>
+        </div>
+    </lightning-card>
+     {showJson}
+    <template if:true={showJson}>
+        <lightning-card title="JSON for Xero">
+            <div class="slds-m-around_medium">
+                <pre>{jsonData}</pre>
+            </div>
+        </lightning-card>
+    </template>
+
+    <lightning-button label="Proceed to Create Invoice" onclick={handleCreateInvoice} class="slds-m-top_medium"></lightning-button>
+</template>
